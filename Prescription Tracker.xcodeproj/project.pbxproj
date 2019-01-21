@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		4A0D1BAB21F27575007FAFC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0D1BAA21F27575007FAFC3 /* AppDelegate.swift */; };
-		4A0D1BAD21F27575007FAFC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0D1BAC21F27575007FAFC3 /* ViewController.swift */; };
 		4A0D1BB021F27575007FAFC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A0D1BAE21F27575007FAFC3 /* Main.storyboard */; };
 		4A0D1BB221F27577007FAFC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0D1BB121F27577007FAFC3 /* Assets.xcassets */; };
 		4A0D1BB521F27577007FAFC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A0D1BB321F27577007FAFC3 /* LaunchScreen.storyboard */; };
+		4A0D1BBF21F27740007FAFC3 /* PrescriptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0D1BBE21F27740007FAFC3 /* PrescriptionTableViewController.swift */; };
+		4A0D1BC121F278A2007FAFC3 /* AddPrescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0D1BC021F278A2007FAFC3 /* AddPrescriptionViewController.swift */; };
+		4A0D1BC321F278B4007FAFC3 /* EditPrescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0D1BC221F278B4007FAFC3 /* EditPrescriptionViewController.swift */; };
+		4A17A6A321F3253A00D7C4FE /* PrescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A6A121F3253A00D7C4FE /* PrescriptionTableViewCell.swift */; };
+		4A17A6A421F3253A00D7C4FE /* PrescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A17A6A221F3253A00D7C4FE /* PrescriptionTableViewCell.xib */; };
+		4A17A6A621F32E7200D7C4FE /* Prescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A6A521F32E7200D7C4FE /* Prescription.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4A0D1BA721F27575007FAFC3 /* Prescription Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Prescription Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A0D1BAA21F27575007FAFC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4A0D1BAC21F27575007FAFC3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4A0D1BAF21F27575007FAFC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4A0D1BB121F27577007FAFC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A0D1BB421F27577007FAFC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A0D1BB621F27577007FAFC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A0D1BBE21F27740007FAFC3 /* PrescriptionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriptionTableViewController.swift; sourceTree = "<group>"; };
+		4A0D1BC021F278A2007FAFC3 /* AddPrescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPrescriptionViewController.swift; sourceTree = "<group>"; };
+		4A0D1BC221F278B4007FAFC3 /* EditPrescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPrescriptionViewController.swift; sourceTree = "<group>"; };
+		4A17A6A121F3253A00D7C4FE /* PrescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		4A17A6A221F3253A00D7C4FE /* PrescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		4A17A6A521F32E7200D7C4FE /* Prescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prescription.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +65,16 @@
 			isa = PBXGroup;
 			children = (
 				4A0D1BAA21F27575007FAFC3 /* AppDelegate.swift */,
-				4A0D1BAC21F27575007FAFC3 /* ViewController.swift */,
 				4A0D1BAE21F27575007FAFC3 /* Main.storyboard */,
 				4A0D1BB121F27577007FAFC3 /* Assets.xcassets */,
 				4A0D1BB321F27577007FAFC3 /* LaunchScreen.storyboard */,
 				4A0D1BB621F27577007FAFC3 /* Info.plist */,
+				4A0D1BBE21F27740007FAFC3 /* PrescriptionTableViewController.swift */,
+				4A0D1BC021F278A2007FAFC3 /* AddPrescriptionViewController.swift */,
+				4A0D1BC221F278B4007FAFC3 /* EditPrescriptionViewController.swift */,
+				4A17A6A121F3253A00D7C4FE /* PrescriptionTableViewCell.swift */,
+				4A17A6A221F3253A00D7C4FE /* PrescriptionTableViewCell.xib */,
+				4A17A6A521F32E7200D7C4FE /* Prescription.swift */,
 			);
 			path = "Prescription Tracker";
 			sourceTree = "<group>";
@@ -125,6 +140,7 @@
 				4A0D1BB521F27577007FAFC3 /* LaunchScreen.storyboard in Resources */,
 				4A0D1BB221F27577007FAFC3 /* Assets.xcassets in Resources */,
 				4A0D1BB021F27575007FAFC3 /* Main.storyboard in Resources */,
+				4A17A6A421F3253A00D7C4FE /* PrescriptionTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,8 +151,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A0D1BAD21F27575007FAFC3 /* ViewController.swift in Sources */,
+				4A0D1BC121F278A2007FAFC3 /* AddPrescriptionViewController.swift in Sources */,
+				4A17A6A321F3253A00D7C4FE /* PrescriptionTableViewCell.swift in Sources */,
 				4A0D1BAB21F27575007FAFC3 /* AppDelegate.swift in Sources */,
+				4A17A6A621F32E7200D7C4FE /* Prescription.swift in Sources */,
+				4A0D1BC321F278B4007FAFC3 /* EditPrescriptionViewController.swift in Sources */,
+				4A0D1BBF21F27740007FAFC3 /* PrescriptionTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +312,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mesquita.bernanos.michel.Prescription-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -310,7 +330,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mesquita.bernanos.michel.Prescription-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
