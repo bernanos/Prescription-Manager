@@ -65,18 +65,50 @@
 			isa = PBXGroup;
 			children = (
 				4A0D1BAA21F27575007FAFC3 /* AppDelegate.swift */,
-				4A0D1BAE21F27575007FAFC3 /* Main.storyboard */,
-				4A0D1BB121F27577007FAFC3 /* Assets.xcassets */,
-				4A0D1BB321F27577007FAFC3 /* LaunchScreen.storyboard */,
-				4A0D1BB621F27577007FAFC3 /* Info.plist */,
+				4A17A74621F6152600D7C4FE /* Model */,
+				4A17A74421F614FA00D7C4FE /* View */,
+				4A17A74321F614CD00D7C4FE /* Controller */,
+				4A17A74521F6150C00D7C4FE /* Supporting Files */,
+			);
+			path = "Prescription Tracker";
+			sourceTree = "<group>";
+		};
+		4A17A74321F614CD00D7C4FE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				4A0D1BBE21F27740007FAFC3 /* PrescriptionTableViewController.swift */,
 				4A0D1BC021F278A2007FAFC3 /* AddPrescriptionViewController.swift */,
 				4A0D1BC221F278B4007FAFC3 /* EditPrescriptionViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4A17A74421F614FA00D7C4FE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A0D1BAE21F27575007FAFC3 /* Main.storyboard */,
+				4A0D1BB321F27577007FAFC3 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A17A74521F6150C00D7C4FE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A0D1BB121F27577007FAFC3 /* Assets.xcassets */,
+				4A0D1BB621F27577007FAFC3 /* Info.plist */,
 				4A17A6A121F3253A00D7C4FE /* PrescriptionTableViewCell.swift */,
 				4A17A6A221F3253A00D7C4FE /* PrescriptionTableViewCell.xib */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4A17A74621F6152600D7C4FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				4A17A6A521F32E7200D7C4FE /* Prescription.swift */,
 			);
-			path = "Prescription Tracker";
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
