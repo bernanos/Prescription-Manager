@@ -88,8 +88,7 @@
                                 <rect key="frame" x="265" y="290" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="chageUnitsPerDay:" destination="gY7-DG-FCM" eventType="valueChanged" id="hOd-Hf-u6L"/>
-                                    <action selector="changeTimesPerDay:" destination="VYS-Ge-Ofe" eventType="valueChanged" id="Cd6-BH-Ut5"/>
+                                    <action selector="changeUnitsPerDay:" destination="gY7-DG-FCM" eventType="valueChanged" id="Gz4-XQ-VvV"/>
                                 </connections>
                             </stepper>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qft-pS-Sbj">
@@ -129,7 +128,6 @@
                                 </state>
                                 <connections>
                                     <action selector="saveButtonPressed:" destination="gY7-DG-FCM" eventType="touchUpInside" id="5nM-W8-rDD"/>
-                                    <action selector="savePrescription:" destination="VYS-Ge-Ofe" eventType="touchUpInside" id="tMN-Bb-F55"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -12,7 +12,6 @@ import CoreData
 class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdit {
     
     var prescriptionArray = [DrugMO]()
-//    let defaults = UserDefaults.standard
     let cellNib = "PrescriptionTableViewCell"
     let cellID = "DetailedPrescriptionCell"
     let editSegueID = "EditPrescription"
@@ -25,37 +24,25 @@ class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Saving data into container (CoreData)
-        do {
-            try context.save()
-        } catch {
-            print("error: \(error)")
-        }
-//        if let savedData = defaults.array(forKey: userDataKey) as? [Prescription] {
-//            prescriptionArray = savedData
-//        }
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
         tableView.register(UINib(nibName: cellNib, bundle: nil), forCellReuseIdentifier: cellID)
         tableView.rowHeight = 155.0
         
+        // Loads initial data saved in the container
         loadData()
         
+        if prescriptionArray.count > 0 {
+            updateQuantities()
+        }
+        
     }
-
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return prescriptionArray.count
     }
-
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PrescriptionTableViewCell
@@ -78,12 +65,12 @@ class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdi
         } else if segue.identifier == editSegueID {
             let destinationVC = segue.destination as! EditPrescriptionViewController
             destinationVC.delegate = self
-            destinationVC.rowForEdit = rowForEdit
             destinationVC.newPrescription = prescriptionArray[rowForEdit!]
         }
     }
     
     func dataReceived(data: Prescription) {
+        
         print("dataReceived")
         let newPrescription = DrugMO(context: context)
         newPrescription.name = data.name!
@@ -99,10 +86,15 @@ class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdi
         tableView.reloadData()
     }
     
-    func dataToEdit(data: Prescription) {
+    func dataToEdit(data: DrugMO) {
         
+        print("dataReceived")
+
+        prescriptionArray[rowForEdit!] = data
         
+        savePrescription()
         
+        tableView.reloadData()
     }
     
     func savePrescription() {
@@ -125,6 +117,19 @@ class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdi
             print("error: \(error)")
         }
         
+    }
+    
+    func updateQuantities() {
+    
+        let currentData = Date()
+        var counter = 0
+        for prescritpion in prescriptionArray {
+            let daysSinceCreation = currentData.timeIntervalSince(prescritpion.dateCreated!)/(24*60*60)
+            prescritpion.remaining -= Double(Int(daysSinceCreation)) * prescritpion.unitsPerDay
+            prescriptionArray[counter] = prescritpion
+            counter += 1
+        }
+    
     }
 
 }

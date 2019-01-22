@@ -10,16 +10,14 @@ import UIKit
 
 protocol CanEdit {
     
-    func dataToEdit(data: Prescription)
+    func dataToEdit(data: DrugMO)
     
 }
 
 class EditPrescriptionViewController: UIViewController {
     
     var delegate : CanEdit?
-    var newPrescription = DrugMO()
-    var rowForEdit : Int?
-    
+    var newPrescription : DrugMO!
     
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var dosage: UITextField!
@@ -30,19 +28,38 @@ class EditPrescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        name.text = newPrescription.name!
-        dosage.text = newPrescription.dosage!
+        name.text = newPrescription.name
+        dosage.text = newPrescription.dosage
         unitsPerDay.text = String(newPrescription.unitsPerDay)
         remaining.text = String(newPrescription.remaining)
         myStepper.value = newPrescription.unitsPerDay
+        myStepper.stepValue = 0.25
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func chageUnitsPerDay(_ sender: Any) {
+    @IBAction func changeUnitsPerDay(_ sender: Any) {
+        
+        unitsPerDay.text = String(Double(myStepper.value))
+        
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
+        
+        newPrescription.dateCreated = Date()
+        newPrescription.name = name.text!
+        newPrescription.dosage = dosage.text!
+        newPrescription.remaining = Double(remaining.text!)!
+        newPrescription.unitsPerDay = Double(unitsPerDay.text!)!
+        
+        if delegate != nil {
+            delegate?.dataToEdit(data: newPrescription)
+            navigationController?.popToRootViewController(animated: true)
+        } else {
+            print("error passing data back")
+            navigationController?.popToRootViewController(animated: true)
+        }
+        
     }
     
 }
