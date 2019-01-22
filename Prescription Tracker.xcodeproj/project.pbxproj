@@ -17,6 +17,7 @@
 		4A17A6A321F3253A00D7C4FE /* PrescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A6A121F3253A00D7C4FE /* PrescriptionTableViewCell.swift */; };
 		4A17A6A421F3253A00D7C4FE /* PrescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A17A6A221F3253A00D7C4FE /* PrescriptionTableViewCell.xib */; };
 		4A17A6A621F32E7200D7C4FE /* Prescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A6A521F32E7200D7C4FE /* Prescription.swift */; };
+		4A17A74E21F62C6400D7C4FE /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A74C21F62C6400D7C4FE /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		4A17A6A121F3253A00D7C4FE /* PrescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		4A17A6A221F3253A00D7C4FE /* PrescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		4A17A6A521F32E7200D7C4FE /* Prescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prescription.swift; sourceTree = "<group>"; };
+		4A17A74D21F62C6400D7C4FE /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				4A17A74421F614FA00D7C4FE /* View */,
 				4A17A74321F614CD00D7C4FE /* Controller */,
 				4A17A74521F6150C00D7C4FE /* Supporting Files */,
+				4A0D1BB621F27577007FAFC3 /* Info.plist */,
 			);
 			path = "Prescription Tracker";
 			sourceTree = "<group>";
@@ -96,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				4A0D1BB121F27577007FAFC3 /* Assets.xcassets */,
-				4A0D1BB621F27577007FAFC3 /* Info.plist */,
 				4A17A6A121F3253A00D7C4FE /* PrescriptionTableViewCell.swift */,
 				4A17A6A221F3253A00D7C4FE /* PrescriptionTableViewCell.xib */,
 			);
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				4A17A6A521F32E7200D7C4FE /* Prescription.swift */,
+				4A17A74C21F62C6400D7C4FE /* DataModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				4A0D1BC121F278A2007FAFC3 /* AddPrescriptionViewController.swift in Sources */,
 				4A17A6A321F3253A00D7C4FE /* PrescriptionTableViewCell.swift in Sources */,
 				4A0D1BAB21F27575007FAFC3 /* AppDelegate.swift in Sources */,
+				4A17A74E21F62C6400D7C4FE /* DataModel.xcdatamodeld in Sources */,
 				4A17A6A621F32E7200D7C4FE /* Prescription.swift in Sources */,
 				4A0D1BC321F278B4007FAFC3 /* EditPrescriptionViewController.swift in Sources */,
 				4A0D1BBF21F27740007FAFC3 /* PrescriptionTableViewController.swift in Sources */,
@@ -388,6 +392,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4A17A74C21F62C6400D7C4FE /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4A17A74D21F62C6400D7C4FE /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 4A17A74D21F62C6400D7C4FE /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4A0D1B9F21F27575007FAFC3 /* Project object */;
 }

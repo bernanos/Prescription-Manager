@@ -12,7 +12,7 @@ class Prescription {
     
     var name : String?
     var dosage : String?
-    var remaining : Int?
+    var remaining : Double?
     var unitsPerDay : Double?
     var createDate : Date?
     

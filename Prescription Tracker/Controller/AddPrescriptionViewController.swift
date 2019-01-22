@@ -49,7 +49,7 @@ class AddPrescriptionViewController: UIViewController {
         newPrescription.createDate = Date()
         newPrescription.name = drugNameTextField.text!
         newPrescription.dosage = dosageTextField.text!
-        newPrescription.remaining = Int(quantityTextField.text!)
+        newPrescription.remaining = Double(quantityTextField.text!)
         newPrescription.unitsPerDay = Double(timesTextField.text!)
         
         if delegate != nil {
