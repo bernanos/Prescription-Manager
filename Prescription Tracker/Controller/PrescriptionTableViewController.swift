@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class PrescriptionTableViewController: UITableViewController, CanReceive {
+class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdit {
     
     var prescriptionArray = [DrugMO]()
 //    let defaults = UserDefaults.standard
@@ -18,13 +18,19 @@ class PrescriptionTableViewController: UITableViewController, CanReceive {
     let editSegueID = "EditPrescription"
     let addSegueID = "AddNewPrescription"
     let userDataKey = "PrescriptionList"
+    var rowForEdit : Int?
     
     // Creating context for managed object
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // Saving data into container (CoreData)
+        do {
+            try context.save()
+        } catch {
+            print("error: \(error)")
+        }
 //        if let savedData = defaults.array(forKey: userDataKey) as? [Prescription] {
 //            prescriptionArray = savedData
 //        }
@@ -61,8 +67,8 @@ class PrescriptionTableViewController: UITableViewController, CanReceive {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        rowForEdit = indexPath.row
         performSegue(withIdentifier: editSegueID, sender: self)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -70,7 +76,10 @@ class PrescriptionTableViewController: UITableViewController, CanReceive {
             let destinationVC = segue.destination as! AddPrescriptionViewController
             destinationVC.delegate = self
         } else if segue.identifier == editSegueID {
-            // Implement editting
+            let destinationVC = segue.destination as! EditPrescriptionViewController
+            destinationVC.delegate = self
+            destinationVC.rowForEdit = rowForEdit
+            destinationVC.newPrescription = prescriptionArray[rowForEdit!]
         }
     }
     
@@ -85,15 +94,24 @@ class PrescriptionTableViewController: UITableViewController, CanReceive {
         
         prescriptionArray.append(newPrescription)
         
+        savePrescription()
         
+        tableView.reloadData()
+    }
+    
+    func dataToEdit(data: Prescription) {
+        
+        
+        
+    }
+    
+    func savePrescription() {
         // Saving data into container (CoreData)
         do {
             try context.save()
         } catch {
             print("error: \(error)")
         }
-//        defaults.set(prescriptionArray, forKey: userDataKey)
-        tableView.reloadData()
     }
     
     func loadData() {
