@@ -49,6 +49,13 @@ class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdi
         cell.drugNameTextField.text = prescriptionArray[indexPath.row].name!
         cell.dosageTextField.text = prescriptionArray[indexPath.row].dosage!
         cell.amountLeftTextField.text = String(prescriptionArray[indexPath.row].remaining)
+        if prescriptionArray[indexPath.row].remaining > 10 {
+            cell.backgroundColor = #colorLiteral(red: 0, green: 0.9786401391, blue: 0.3691126108, alpha: 1)
+        } else if prescriptionArray[indexPath.row].remaining > 5 {
+            cell.backgroundColor = #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
+        } else {
+            cell.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+        }
         return cell
     }
     
@@ -56,6 +63,18 @@ class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdi
         tableView.deselectRow(at: indexPath, animated: true)
         rowForEdit = indexPath.row
         performSegue(withIdentifier: editSegueID, sender: self)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // detal with deleting entry
+            context.delete(prescriptionArray[indexPath.row])
+            prescriptionArray.remove(at: indexPath.row)
+            savePrescription()
+            tableView.reloadData()
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -120,12 +139,22 @@ class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdi
     }
     
     func updateQuantities() {
-    
-        let currentData = Date()
+        
+        // Testing quantity update using future date
+        var dateComponents = DateComponents()
+        dateComponents.year = 2019
+        dateComponents.month = 2
+        dateComponents.day = 10
+        let userCalendar = Calendar.current // user calendar
+        let currentData = userCalendar.date(from: dateComponents)
+        
+        
+        //let currentData = Date()
         var counter = 0
         for prescritpion in prescriptionArray {
-            let daysSinceCreation = currentData.timeIntervalSince(prescritpion.dateCreated!)/(24*60*60)
+            let daysSinceCreation = currentData!.timeIntervalSince(prescritpion.dateCreated!)/(24*60*60)
             prescritpion.remaining -= Double(Int(daysSinceCreation)) * prescritpion.unitsPerDay
+            prescritpion.dateCreated = currentData
             prescriptionArray[counter] = prescritpion
             counter += 1
         }
