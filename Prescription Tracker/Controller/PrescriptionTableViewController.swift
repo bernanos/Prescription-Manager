@@ -139,20 +139,11 @@ class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdi
     }
     
     func updateQuantities() {
-        
-        // Testing quantity update using future date
-        var dateComponents = DateComponents()
-        dateComponents.year = 2019
-        dateComponents.month = 2
-        dateComponents.day = 10
-        let userCalendar = Calendar.current // user calendar
-        let currentData = userCalendar.date(from: dateComponents)
-        
-        
-        //let currentData = Date()
+       
+        let currentData = Date()
         var counter = 0
         for prescritpion in prescriptionArray {
-            let daysSinceCreation = currentData!.timeIntervalSince(prescritpion.dateCreated!)/(24*60*60)
+            let daysSinceCreation = currentData.timeIntervalSince(prescritpion.dateCreated!)/(24*60*60)
             prescritpion.remaining -= Double(Int(daysSinceCreation)) * prescritpion.unitsPerDay
             prescritpion.dateCreated = currentData
             prescriptionArray[counter] = prescritpion
