@@ -9,23 +9,27 @@
 import UIKit
 import CoreData
 
+//TODO: delete coredata and import RealmSwift
+
 class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdit {
     
+    //TODO: Initialise Realm object "let realm = try! Realm()
+    
+    //TODO: Change prescriptionArray to be a Results<Prescription> object (Real object)
     var prescriptionArray = [DrugMO]()
+    
     let cellNib = "PrescriptionTableViewCell"
     let cellID = "DetailedPrescriptionCell"
     let editSegueID = "EditPrescription"
     let addSegueID = "AddNewPrescription"
-    let userDataKey = "PrescriptionList"
     var rowForEdit : Int?
     
+    //TODO: delete coredata context
     // Creating context for managed object
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
         tableView.register(UINib(nibName: cellNib, bundle: nil), forCellReuseIdentifier: cellID)
         tableView.rowHeight = 155.0
@@ -33,38 +37,45 @@ class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdi
         // Loads initial data saved in the container
         loadData()
         
-        if prescriptionArray.count > 0 {
-            updateQuantities()
-        }
-        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        //TODO: change implementation to check for realm object and to have a default value if realm object is nil
         return prescriptionArray.count
     }
-
+    
+    //TODO: change implementation to deal with case where realm object is nil
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PrescriptionTableViewCell
         cell.drugNameTextField.text = prescriptionArray[indexPath.row].name!
         cell.dosageTextField.text = prescriptionArray[indexPath.row].dosage!
-        cell.amountLeftTextField.text = String(prescriptionArray[indexPath.row].remaining)
-        if prescriptionArray[indexPath.row].remaining > 10 {
-            cell.backgroundColor = #colorLiteral(red: 0, green: 0.9786401391, blue: 0.3691126108, alpha: 1)
-        } else if prescriptionArray[indexPath.row].remaining > 5 {
-            cell.backgroundColor = #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
-        } else {
-            cell.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+        
+        let currentDate = Date();
+        if let creationDate = prescriptionArray[indexPath.row].dateCreated {
+            let daysSinceCreation = currentDate.timeIntervalSince(creationDate)/(24*60*60)
+            let totalNumberOfPills = prescriptionArray[indexPath.row].numberOfPillsBought
+            let remaining = totalNumberOfPills - Double(Int(daysSinceCreation)) * prescriptionArray[indexPath.row].unitsPerDay
+            cell.amountLeftTextField.text = String(remaining)
+            if  remaining > 14 {
+                cell.backgroundColor = #colorLiteral(red: 0, green: 0.9786401391, blue: 0.3691126108, alpha: 1)
+            } else if remaining > 7 {
+                cell.backgroundColor = #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
+            } else {
+                cell.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+            }
         }
+
         return cell
     }
     
+    //TODO: change implementation to use realm pattern for editting entry
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         rowForEdit = indexPath.row
         performSegue(withIdentifier: editSegueID, sender: self)
     }
     
+    //TODO: change implementation to use realm deleting pattern
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // detal with deleting entry
@@ -77,6 +88,7 @@ class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdi
         }
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == addSegueID {
             let destinationVC = segue.destination as! AddPrescriptionViewController
@@ -84,6 +96,8 @@ class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdi
         } else if segue.identifier == editSegueID {
             let destinationVC = segue.destination as! EditPrescriptionViewController
             destinationVC.delegate = self
+            
+            //TODO: the following line can be changed to use tableView.indexPathForSelectedRow. Also, implement Realm pattern for newPrescription
             destinationVC.newPrescription = prescriptionArray[rowForEdit!]
         }
     }
@@ -94,7 +108,7 @@ class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdi
         let newPrescription = DrugMO(context: context)
         newPrescription.name = data.name!
         newPrescription.dosage = data.dosage!
-        newPrescription.remaining = data.remaining!
+        newPrescription.numberOfPillsBought = data.remaining!
         newPrescription.dateCreated = data.createDate!
         newPrescription.unitsPerDay = data.unitsPerDay!
         
@@ -125,31 +139,17 @@ class PrescriptionTableViewController: UITableViewController, CanReceive, CanEdi
         }
     }
     
+    //TODO: Modify loadData to comply with Realm pattern
     func loadData() {
         
         // Reading data from container (CoreData)
         let request : NSFetchRequest<DrugMO> = DrugMO.fetchRequest()
         do {
-            prescriptionArray =
-                try context.fetch(request)
+            prescriptionArray = try context.fetch(request)
         } catch {
             print("error: \(error)")
         }
         
     }
     
-    func updateQuantities() {
-       
-        let currentData = Date()
-        var counter = 0
-        for prescritpion in prescriptionArray {
-            let daysSinceCreation = currentData.timeIntervalSince(prescritpion.dateCreated!)/(24*60*60)
-            prescritpion.remaining -= Double(Int(daysSinceCreation)) * prescritpion.unitsPerDay
-            prescritpion.dateCreated = currentData
-            prescriptionArray[counter] = prescritpion
-            counter += 1
-        }
-    
-    }
-
 }

@@ -8,6 +8,8 @@
 
 import Foundation
 
+//TODO: import RealmSwift
+
 class Prescription {
     
     var name : String?
@@ -17,3 +19,9 @@ class Prescription {
     var createDate : Date?
     
 }
+
+//TODO: edit this class to inherit from Object (realm) and setup propetries using @objc dynamic
+
+//TODO: Delete DataModel.xcdatamodel
+
+// There won't be any need to setup relationships, but revise how to do it

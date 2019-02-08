@@ -17,6 +17,8 @@ protocol CanEdit {
 class EditPrescriptionViewController: UIViewController {
     
     var delegate : CanEdit?
+    
+    //TODO: implement "didSet" in order to initialize the newPrescription object
     var newPrescription : DrugMO!
     
     @IBOutlet weak var name: UITextField!
@@ -31,7 +33,7 @@ class EditPrescriptionViewController: UIViewController {
         name.text = newPrescription.name
         dosage.text = newPrescription.dosage
         unitsPerDay.text = String(newPrescription.unitsPerDay)
-        remaining.text = String(newPrescription.remaining)
+        remaining.text = String(newPrescription.numberOfPillsBought)
         myStepper.value = newPrescription.unitsPerDay
         myStepper.stepValue = 0.25
 
@@ -49,7 +51,7 @@ class EditPrescriptionViewController: UIViewController {
         newPrescription.dateCreated = Date()
         newPrescription.name = name.text!
         newPrescription.dosage = dosage.text!
-        newPrescription.remaining = Double(remaining.text!)!
+        newPrescription.numberOfPillsBought = Double(remaining.text!)!
         newPrescription.unitsPerDay = Double(unitsPerDay.text!)!
         
         if delegate != nil {

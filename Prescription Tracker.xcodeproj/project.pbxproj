@@ -18,6 +18,7 @@
 		4A17A6A421F3253A00D7C4FE /* PrescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A17A6A221F3253A00D7C4FE /* PrescriptionTableViewCell.xib */; };
 		4A17A6A621F32E7200D7C4FE /* Prescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A6A521F32E7200D7C4FE /* Prescription.swift */; };
 		4A17A74E21F62C6400D7C4FE /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A74C21F62C6400D7C4FE /* DataModel.xcdatamodeld */; };
+		B34090D82ADE2D15F14663A7 /* Pods_Prescription_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9B1B482577D703B82CEB2C /* Pods_Prescription_Tracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,9 @@
 		4A17A6A221F3253A00D7C4FE /* PrescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		4A17A6A521F32E7200D7C4FE /* Prescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prescription.swift; sourceTree = "<group>"; };
 		4A17A74D21F62C6400D7C4FE /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		4C9B1B482577D703B82CEB2C /* Pods_Prescription_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Prescription_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6721D48321BAF3D175173223 /* Pods-Prescription Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prescription Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Prescription Tracker/Pods-Prescription Tracker.release.xcconfig"; sourceTree = "<group>"; };
+		B48BBFEF956FDA581CB169FF /* Pods-Prescription Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prescription Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Prescription Tracker/Pods-Prescription Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B34090D82ADE2D15F14663A7 /* Pods_Prescription_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +57,8 @@
 			children = (
 				4A0D1BA921F27575007FAFC3 /* Prescription Tracker */,
 				4A0D1BA821F27575007FAFC3 /* Products */,
+				F10ABA88878367CD9A087CB9 /* Pods */,
+				4D31D696DE80D76D35F68229 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +121,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		4D31D696DE80D76D35F68229 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C9B1B482577D703B82CEB2C /* Pods_Prescription_Tracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F10ABA88878367CD9A087CB9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B48BBFEF956FDA581CB169FF /* Pods-Prescription Tracker.debug.xcconfig */,
+				6721D48321BAF3D175173223 /* Pods-Prescription Tracker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,9 +145,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4A0D1BB921F27577007FAFC3 /* Build configuration list for PBXNativeTarget "Prescription Tracker" */;
 			buildPhases = (
+				8666B31962492635CC6C6742 /* [CP] Check Pods Manifest.lock */,
 				4A0D1BA321F27575007FAFC3 /* Sources */,
 				4A0D1BA421F27575007FAFC3 /* Frameworks */,
 				4A0D1BA521F27575007FAFC3 /* Resources */,
+				4BF028F157639402BACFF924 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -180,6 +206,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4BF028F157639402BACFF924 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Prescription Tracker/Pods-Prescription Tracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Prescription Tracker/Pods-Prescription Tracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8666B31962492635CC6C6742 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Prescription Tracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4A0D1BA321F27575007FAFC3 /* Sources */ = {
@@ -336,6 +411,7 @@
 		};
 		4A0D1BBA21F27577007FAFC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B48BBFEF956FDA581CB169FF /* Pods-Prescription Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -354,6 +430,7 @@
 		};
 		4A0D1BBB21F27577007FAFC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6721D48321BAF3D175173223 /* Pods-Prescription Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 
+//TODO: Import RealmSwift
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,8 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //TODO: Initialize new Realm object (in a do/catch structure
+        
         return true
     }
+    
+    //TODO: - Delete all functions related to CoreData including the import clause
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
